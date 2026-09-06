@@ -18,7 +18,7 @@ final class SingleColumnMapper<T> implements RowMapper<T> {
 
     @Override
     public T mapRow(ResultSet rs) throws SQLException {
-        if (SqlTestingHook.hook != null) {
+        if (SqlTestingHook.isTesting()) {
             SqlTestingHook.hook.checkColumn(rs, rowType, columnMapper);
             return SqlTestingHook.mock(rowType);
         }

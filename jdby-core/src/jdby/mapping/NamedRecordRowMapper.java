@@ -42,7 +42,7 @@ final class NamedRecordRowMapper<R> implements RowMapper<R> {
 
     @Override
     public R mapRow(ResultSet rs) throws SQLException {
-        if (SqlTestingHook.hook != null) {
+        if (SqlTestingHook.isTesting()) {
             SqlTestingHook.hook.checkRowType(rs, constructor.getDeclaringClass(), columnMappers, sqlNames);
             return null;
         }
