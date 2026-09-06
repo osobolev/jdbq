@@ -1,5 +1,6 @@
 package jdby.core;
 
+import java.math.BigDecimal;
 import java.sql.JDBCType;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -23,12 +24,20 @@ public interface SqlParameter {
         return jdbc(x, JDBCType.DOUBLE);
     }
 
+    static SqlParameter pDecimal(BigDecimal x) {
+        return jdbc(x, JDBCType.DECIMAL);
+    }
+
     static SqlParameter pBoolean(Boolean x) {
         return jdbc(x, JDBCType.BOOLEAN);
     }
 
     static SqlParameter pString(String x) {
         return jdbc(x, JDBCType.VARCHAR);
+    }
+
+    static SqlParameter pBytes(byte[] x) {
+        return jdbc(x, JDBCType.VARBINARY);
     }
 
     static SqlParameter pDate(LocalDate x) {
