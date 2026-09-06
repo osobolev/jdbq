@@ -12,35 +12,35 @@ public interface SqlParameter {
     void set(PreparedStatement ps, int index) throws SQLException;
 
     static SqlParameter pInt(Integer x) {
-        return new SimpleSqlParameter(x, JDBCType.INTEGER);
+        return jdbc(x, JDBCType.INTEGER);
     }
 
     static SqlParameter pLong(Long x) {
-        return new SimpleSqlParameter(x, JDBCType.BIGINT);
+        return jdbc(x, JDBCType.BIGINT);
     }
 
     static SqlParameter pDouble(Double x) {
-        return new SimpleSqlParameter(x, JDBCType.DOUBLE);
+        return jdbc(x, JDBCType.DOUBLE);
     }
 
     static SqlParameter pBoolean(Boolean x) {
-        return new SimpleSqlParameter(x, JDBCType.BOOLEAN);
+        return jdbc(x, JDBCType.BOOLEAN);
     }
 
     static SqlParameter pString(String x) {
-        return new SimpleSqlParameter(x, JDBCType.VARCHAR);
+        return jdbc(x, JDBCType.VARCHAR);
     }
 
     static SqlParameter pDate(LocalDate x) {
-        return new SimpleSqlParameter(x, JDBCType.DATE);
+        return jdbc(x, JDBCType.DATE);
     }
 
     static SqlParameter pDateTime(LocalDateTime x) {
-        return new SimpleSqlParameter(x, JDBCType.TIMESTAMP);
+        return jdbc(x, JDBCType.TIMESTAMP);
     }
 
     static SqlParameter pDateTime(OffsetDateTime x) {
-        return new SimpleSqlParameter(x, JDBCType.TIMESTAMP_WITH_TIMEZONE);
+        return jdbc(x, JDBCType.TIMESTAMP_WITH_TIMEZONE);
     }
 
     static SqlParameter jdbc(Object x, JDBCType type) {
