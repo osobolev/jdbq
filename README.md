@@ -33,7 +33,7 @@ See full example code [here](https://github.com/osobolev/jdby/tree/master/jdby-s
 - JDBI's support for records does not work out of the box (you need to specify a mapper somewhere).
 - **JDBI is too large** for simple SQL execution. For example, the equivalent of the sample at the above link
   requires **1.6 Mb** of dependencies (**1.2 Mb** for JDBI itself + **0.4 Mb** for StringTemplate4 engine). Compare this
-  to less than **60 Kb** size of JDBY (about 29 times smaller).
+  to **60 Kb** size of JDBY (about 27 times smaller).
 
 So if you:
 - need only standard SQL execution functionality 
@@ -49,13 +49,13 @@ Maven:
 <dependency>
     <groupId>io.github.osobolev.jdby</groupId>
     <artifactId>jdby-core</artifactId>
-    <version>1.3</version>
+    <version>1.4</version>
 </dependency>
 ```
 
 Gradle:
 ```kotlin
-implementation("io.github.osobolev.jdby:jdby-core:1.3")
+implementation("io.github.osobolev.jdby:jdby-core:1.4")
 
 ```
 
