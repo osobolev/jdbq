@@ -1,6 +1,7 @@
 package jdby.mapping;
 
 import jdby.core.RowMapper;
+import jdby.core.testing.SqlTestingHook;
 
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
@@ -54,7 +55,13 @@ public class DefaultMapperContextBuilder {
     }
 
     public <T> DefaultMapperContextBuilder registerRow(Class<T> rowType, RowMapper<T> rowMapper) {
-        rowMappers.put(rowType, rowMapper);
+        RowMapper<T> ignoreTesting = rs -> {
+            if (SqlTestingHook.isTesting()) {
+                return SqlTestingHook.mock(rowType);
+            }
+            return rowMapper.mapRow(rs);
+        };
+        rowMappers.put(rowType, ignoreTesting);
         return this;
     }
 
