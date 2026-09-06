@@ -1,6 +1,9 @@
 package jdby.dao;
 
+import jdby.core.RowMapper;
 import jdby.core.SqlParameter;
+import jdby.mapping.ColumnMapper;
+import jdby.mapping.ColumnNaming;
 import jdby.mapping.DefaultMapperContextBuilder;
 
 import java.lang.reflect.Type;
@@ -49,6 +52,24 @@ public class DefaultDaoContextBuilder extends DefaultMapperContextBuilder {
 
     public DefaultDaoContextBuilder registerParameter(Type type, ParameterMapper parameterMapper) {
         parameterMappers.put(type, parameterMapper);
+        return this;
+    }
+
+    @Override
+    public DefaultDaoContextBuilder setColumnNaming(ColumnNaming columnNaming) {
+        super.setColumnNaming(columnNaming);
+        return this;
+    }
+
+    @Override
+    public DefaultDaoContextBuilder registerColumn(Type type, ColumnMapper columnMapper) {
+        super.registerColumn(type, columnMapper);
+        return this;
+    }
+
+    @Override
+    public <T> DefaultDaoContextBuilder registerRow(Class<T> rowType, RowMapper<T> rowMapper) {
+        super.registerRow(rowType, rowMapper);
         return this;
     }
 
